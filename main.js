@@ -26,15 +26,15 @@ function playPause() {
   }
 }
 
-if (song.play) {
-  setInterval(() => {
-    progress.value = song.currentTime;
-  }, 100);
-}
+song.addEventListener('timeupdate', ()=>{
+  progress.value = song.currentTime;
+})
 
-progress.onchange = function () {
+updateSlider = function () {
   song.currentTime = progress.value;
   playPausekey.classList.remove("fa-play");
   playPausekey.classList.add("fa-pause");
   song.play();
 };
+
+progress.addEventListener('input', updateSlider);
