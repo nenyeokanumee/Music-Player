@@ -3,15 +3,16 @@ const progress = document.getElementById("progress");
 const playPausekey = document.getElementById("playPauseKey");
 const maxSongDuration = document.getElementById("maxSongDuration");
 
-song.onloadedmetadata = function () {
+function handleMetaData() {
   progress.max = song.duration;
   progress.value = song.currentTime;
   let totalTime = song.duration;
   let minutes = Math.floor(totalTime / 60);
   let seconds = Math.floor(totalTime % 60);
-  maxSongDuration.innerHTML = `${minutes}:${seconds}`;
+  maxSongDuration.innerHTML = `${minutes < 10 ? 0 : ''}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };
 
+song.addEventListener("loadedmetadata", handleMetaData);
 
 function playPause() {
   if (playPausekey.classList.contains("fa-play")) {
