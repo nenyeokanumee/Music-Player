@@ -30,11 +30,11 @@ song.addEventListener('timeupdate', ()=>{
   progress.value = song.currentTime;
 })
 
-updateSlider = function () {
+progress.addEventListener('input', updateSlider);
+
+function updateSlider() {
   song.currentTime = progress.value;
   playPausekey.classList.remove("fa-play");
   playPausekey.classList.add("fa-pause");
   song.play();
 };
-
-progress.addEventListener('input', updateSlider);
