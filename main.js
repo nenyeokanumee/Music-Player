@@ -16,12 +16,10 @@ song.addEventListener("loadedmetadata", handleMetaData);
 
 function playPause() {
   if (playPausekey.classList.contains("fa-play")) {
-    playPausekey.classList.remove("fa-play");
-    playPausekey.classList.add("fa-pause");
+    playPausekey.classList.replace("fa-play", "fa-pause");
     song.play();
   } else {
-    playPausekey.classList.remove("fa-pause");
-    playPausekey.classList.add("fa-play");
+    playPausekey.classList.replace("fa-pause", "fa-play");
     song.pause();
   }
 }
@@ -34,7 +32,6 @@ progress.addEventListener('input', updateSlider);
 
 function updateSlider() {
   song.currentTime = progress.value;
-  playPausekey.classList.remove("fa-play");
-  playPausekey.classList.add("fa-pause");
+  playPausekey.classList.replace("fa-play", "fa-pause");
   song.play();
 };
